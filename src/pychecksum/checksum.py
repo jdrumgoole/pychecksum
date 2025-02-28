@@ -139,7 +139,8 @@ class Checksum:
             cls,
             file_path: Union[str, Path],
             hash_algorithm: Union[str, HashAlgorithm] = DEFAULT_HASH_ALGORITHM,
-            block_size: Optional[int] = None
+            block_size: Optional[int] = None,
+            delay: Optional[float] = None
     ) -> str:
         """Compute hash of a file using the specified algorithm.
 
@@ -158,7 +159,7 @@ class Checksum:
         absolute_path = Path(file_path).absolute()
 
         # Create a temporary Checksum object with the specified algorithm
-        checksum = cls(absolute_path, block_size, hash_algorithm)
+        checksum = cls(absolute_path, block_size, hash_algorithm, delay)
 
         # Return the computed checksum
         if checksum.checksum is None:

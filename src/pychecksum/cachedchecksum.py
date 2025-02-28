@@ -108,7 +108,8 @@ class CachedChecksum:
             file_path: Union[str, Path],
             hash_algorithm: Union[str, HashAlgorithm] = Checksum.DEFAULT_HASH_ALGORITHM,
             block_size: Optional[int] = None,
-            use_cache: bool = True
+            use_cache: bool = True,
+            delay: Optional[float] = None
     ) -> str:
         """
         Compute hash of a file with optional caching.
@@ -130,7 +131,7 @@ class CachedChecksum:
         abs_path = Path(file_path).absolute()
 
         if not use_cache:
-            return Checksum.compute_hash(abs_path, hash_algorithm, block_size)
+            return Checksum.compute_hash(abs_path, hash_algorithm, block_size, delay)
 
         cached_hash = cls._cache.get(abs_path, hash_algorithm)
         if cached_hash:

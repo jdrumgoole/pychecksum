@@ -96,6 +96,10 @@ def hash(
         "--no-cache",
         help="Disable caching of checksums",
     ),
+    delay: float = typer.Option(
+        None,
+        help="delay between each block read in seconds, stops process saturating the I/O or CPU",
+    ),
     multiple_algorithms: List[str] = typer.Option(
         [],
         "--multi",
@@ -206,7 +210,8 @@ def hash(
                             file_path,
                             hash_algorithm=algo,
                             block_size=block_size,
-                            use_cache=not no_cache
+                            use_cache=not no_cache,
+                            delay=delay
                         )
 
                         # Save result
@@ -260,6 +265,10 @@ def verify(
         "-b",
         help="Block size in bytes for reading files",
     ),
+    delay: float = typer.Option(
+        None,
+        help="delay between each block read in seconds, stops process saturating the I/O or CPU",
+    ),
     ignore_case: bool = typer.Option(
         False,
         "--ignore-case",
@@ -282,7 +291,7 @@ def verify(
         return
 
     try:
-        actual_checksum = CachedChecksum.compute_hash(file, hash_algorithm=algo, block_size=block_size)
+        actual_checksum = CachedChecksum.compute_hash(file, hash_algorithm=algo, block_size=block_size, delay=delay)
 
         # Compare checksums
         if ignore_case:
@@ -335,6 +344,10 @@ def batch(
         "--base-dir",
         "-d",
         help="Base directory for relative file paths",
+    ),
+    delay: float = typer.Option(
+        None,
+        help="delay between each block read in seconds, stops process saturating the I/O or CPU",
     ),
     parallel: bool = typer.Option(
         True,
@@ -419,7 +432,8 @@ def batch(
                 actual_checksum = CachedChecksum.compute_hash(
                     file_path,
                     hash_algorithm=algo,
-                    block_size=block_size
+                    block_size=block_size,
+                    delay=delay
                 )
 
                 # Compare checksums
