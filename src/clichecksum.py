@@ -659,7 +659,6 @@ def collect_files(directory: Path, exclude_patterns: List[str], verbose: bool, p
 
     return files
 
-
 def is_excluded(path: Path, exclude_patterns: List[str]) -> bool:
     """Check if a path should be excluded based on patterns."""
     if not exclude_patterns:

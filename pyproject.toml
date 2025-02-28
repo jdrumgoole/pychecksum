@@ -11,6 +11,11 @@ python = "^3.12"
 pytest = "^8.3.4"
 typer = "^0.15.2"
 
+[tool.poetry.scripts]
+my-command = "pychecksum.clichecksum:app"
+
+[tool.poetry.group.dev.dependencies]
+invoke = "^2.2.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -2,6 +2,10 @@
 
 A flexible, high-performance Python package for calculating and caching file checksums using any hash algorithm supported by hashlib.
 
+## Note for source code readers
+We use [invoke](https://docs.pyinvoke.org/en/stable/) to drive a bunch of internal tasks. 
+You can see the list of tasks in `tasks.py` at the top level. 
+
 ## Features
 
 - **Multiple Algorithm Support**: Use any hash algorithm available in hashlib (MD5, SHA1, SHA256, SHA512, etc.)
@@ -10,7 +14,7 @@ A flexible, high-performance Python package for calculating and caching file che
 - **Smart Caching**: Built-in caching system based on file modification times and content
 - **Low Memory Footprint**: Stream-based processing keeps memory usage low, even for very large files
 - **Comprehensive CLI**: Powerful command-line interface with recursive directory processing and multiple output formats
-
+- **full cli support**: The package includes a powerful command-line tool (clichecksum) for computing and verifying checksums.
 ## Installation
 
 ```bash
