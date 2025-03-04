@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "pychecksum"
-version = "0.1.0"
+name = "pychecksumtool"
+version = "0.1.5"
 description = "A generalised efficient checksum library for python hashlib"
 authors = ["Joe Drumgoole <joe@joedrumgoole.com>"]
 license = "Apache-2.0"
@@ -12,7 +12,7 @@ pytest = "^8.3.4"
 typer = "^0.15.2"
 
 [tool.poetry.scripts]
-my-command = "pychecksum.clichecksum:app"
+clichecksum = "pychecksumtool.scripts.clichecksum:main"
 
 [tool.poetry.group.dev.dependencies]
 invoke = "^2.2.0"

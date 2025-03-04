@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 # Import all necessary classes from the package
-from pychecksum import HashAlgorithm, Checksum, HashCache, CachedChecksum, EMPTY_HASHES
+from pychecksumtool import HashAlgorithm, Checksum, HashCache, CachedChecksum, EMPTY_HASHES
 
 
 class TestHashAlgorithm:

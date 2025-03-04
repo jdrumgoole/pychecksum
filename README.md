@@ -19,7 +19,7 @@ You can see the list of tasks in `tasks.py` at the top level.
 
 ```bash
 # Using pip
-pip install pychecksum
+pip install pychecksumtool
 
 # From source
 git clone https://github.com/yourusername/checksum.git
@@ -32,7 +32,7 @@ pip install -e .
 ### Computing Checksums
 
 ```python
-from src.pychecksum import Checksum, HashAlgorithm
+from src.pychecksumtool import Checksum, HashAlgorithm
 
 # Calculate a SHA-256 checksum (default)
 checksum = Checksum("myfile.txt")
@@ -50,7 +50,7 @@ print(f"SHA-512: {large_file_checksum.checksum}")
 ### Using the Cache
 
 ```python
-from src.pychecksum import CachedChecksum, HashAlgorithm
+from src.pychecksumtool import CachedChecksum, HashAlgorithm
 
 # First calculation computes and caches
 cached = CachedChecksum("myfile.txt", hash_algorithm=HashAlgorithm.SHA256)
@@ -72,7 +72,7 @@ print(f"MD5: {md5_cached.checksum}")
 ### Using Static Methods
 
 ```python
-from src.pychecksum import CachedChecksum, HashAlgorithm
+from src.pychecksumtool import CachedChecksum, HashAlgorithm
 
 # Static method for computing hash with caching
 sha256_hash = CachedChecksum.compute_hash("myfile.txt", HashAlgorithm.SHA256)
@@ -87,7 +87,7 @@ print(f"SHA-256 of data: {data_hash}")
 ### Available Hash Algorithms
 
 ```python
-from src.pychecksum import HashAlgorithm
+from src.pychecksumtool import HashAlgorithm
 
 # List all available algorithms
 available_algos = HashAlgorithm.get_available()
@@ -125,11 +125,11 @@ checksum hash /path/to/directory --recursive
 # Exclude files/directories
 checksum hash /path/to/directory --recursive --exclude "*.tmp" --exclude "*cache*"
 
-# Change output format
-checksum hash myfile.txt --format json
+# Change output fmt
+checksum hash myfile.txt --fmt json
 
 # Save results to a file
-checksum hash myfile.txt --output results.json --format json
+checksum hash myfile.txt --output results.json --fmt json
 ```
 
 ### Verifying Checksums
